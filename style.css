@@ -1,0 +1,18 @@
+.asc{
+	width: 10px;
+	height: 10px;
+	/*padding:10px;*/
+	/*position:relative;*/
+	background-image: url(caretb.png);
+	background-repeat: no-repeat;
+}
+
+.desc{
+	width: 10px;
+	height: 10px;
+	/*padding:10px;*/
+	/*position:relative;*/
+	background-image: url(caretb.png);
+	transform: rotate(180deg);
+	background-repeat: no-repeat;
+}
