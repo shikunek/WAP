@@ -1,29 +1,36 @@
 
-window.onload = addRow;
+window.onload = function(){
+	tables = document.getElementsByTagName('table');
+	for (var i = 0; i < tables.length; i++) {
+		addRow(tables[i].id);		
+	};
+};
 
-function addRow()
+function addRow(id)
 {
-	var table = document.getElementById("table");
-    var colsCount = document.getElementById("table").rows[0].cells.length;
+	var table = document.getElementById(id);
+    var colsCount = table.rows[0].cells.length;
     var row = table.insertRow(0);
-	// console.log(colsCount);
     for (var i = 0; i < colsCount; i++) 
     {
     	var cell1 = row.insertCell(i);
-    	cell1.innerHTML = "<input class='input' type='text' name='sortingInput' onkeyup='filtering("+i+")'> <button type='button' onClick='sorting(0)'>ASC</button> <button type='button' onClick='sorting(1)'>DESC</button>";  	
+    	
+    	cell1.innerHTML = "<input class='input' type='text' name='sortingInput' onkeyup='filtering("+i+","+id+")'> <button type='button' onClick='sorting(0)'>ASC</button> <button type='button' onClick='sorting(1)'>DESC</button>";  	
+
     };
     
 }
 
-function filtering(n)
+function filtering(n, k)
 {
+	console.log(k.id);
 	// console.log(n);
+	
 	var input, filter, table, tr, td, i;
   	input = document.getElementsByClassName("input")[n];
-  	// input = document.getElementById("myInput");
   	filter = input.value.toUpperCase();
-  	table = document.getElementById("table");
-  	tr = table.getElementsByTagName("tr");
+  	table = document.getElementById(k.id);
+  	tr = document.getElementById(k.id).tBodies[0].rows;
   	
   	for (i = 2; i < tr.length; i++) 
   	{
